@@ -77,7 +77,7 @@ public class JobData {
 
             String aValue = row.get(column);
 
-            if (aValue.contains(value)) {
+            if (aValue.toUpperCase().contains(value.toUpperCase())) {
                 jobs.add(row);
             }
         }
@@ -107,6 +107,7 @@ public class JobData {
             allJobs = new ArrayList<>();
 
             // Put the records into a more friendly format
+            //String star = "*****";
             for (CSVRecord record : records) {
                 HashMap<String, String> newJob = new HashMap<>();
 
@@ -129,9 +130,12 @@ public class JobData {
      loadData();
      ArrayList<HashMap<String, String>> arjob = new ArrayList<>();
      for (HashMap<String, String> row : allJobs) {
+         String star = "*****";
          for (String skey : row.keySet()) {
              if (row.get(skey).toUpperCase().contains(strvalue.toUpperCase())) {
                  arjob.add(row);
+
+
                  break;
              }
          }
