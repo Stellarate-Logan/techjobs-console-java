@@ -7,6 +7,7 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -124,5 +125,17 @@ public class JobData {
             e.printStackTrace();
         }
     }
-
-}
+ public static ArrayList<HashMap<String, String>> findByValue(String strvalue) {
+     loadData();
+     ArrayList<HashMap<String, String>> arjob = new ArrayList<>();
+     for (HashMap<String, String> row : allJobs) {
+         for (String skey : row.keySet()) {
+             if (row.get(skey).toUpperCase().contains(strvalue.toUpperCase())) {
+                 arjob.add(row);
+                 break;
+             }
+         }
+     }
+ return arjob;
+ }
+ }
